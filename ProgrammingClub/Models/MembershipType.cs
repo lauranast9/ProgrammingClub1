@@ -1,11 +1,16 @@
-﻿namespace ProgrammingClub.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ProgrammingClub.Models
 {
     public class MembershipType
     {
-        public Guid IdMembershipType { get; set; }
-        public string Name {  get; set; }
-        public string Description { get; set; }
-        public string SubscriptionLength {  get; set; }
+        
+            [Key]
+            public Guid IDMembershipType { get; set; }
+            public string? Name { get; set; }
+            public string? Description { get; set; }
+            public int? SubscriptionLengthInMonths { get; set; }
+        }
 
     }
-}
+
