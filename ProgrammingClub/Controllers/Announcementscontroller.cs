@@ -11,10 +11,10 @@ namespace ProgrammingClub.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     [ApiVersion("3.0")]
-    public class AnnouncementController : ControllerBase
+    public class AnnouncementsController : ControllerBase
     {
         private readonly IAnnouncementsService _announcementService;
-        public AnnouncementController(IAnnouncementsService announcementService)
+        public AnnouncementsController(IAnnouncementsService announcementService)
         {
             _announcementService = announcementService;
         }

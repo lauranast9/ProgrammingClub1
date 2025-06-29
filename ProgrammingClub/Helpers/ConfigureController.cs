@@ -7,8 +7,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace ProgrammingClub.Helpers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+ 
     public class ConfigureSwagger : IConfigureNamedOptions<SwaggerGenOptions>
     {
         private readonly IApiVersionDescriptionProvider _provider;

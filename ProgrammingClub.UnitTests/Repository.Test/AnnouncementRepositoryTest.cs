@@ -68,7 +68,7 @@ namespace ProgrammingClub.UnitTests.Repositories.Test
             var updated = await _announcementRepository.UpdateAnnouncementAsync(announcement);
 
             // Assert
-            Assert.Null(updated); // Now expects null when not found
+            Assert.Null(updated);
         }
 
         [Fact]
@@ -79,7 +79,8 @@ namespace ProgrammingClub.UnitTests.Repositories.Test
             {
                 IdAnnouncement = Guid.NewGuid(),
                 Title = "Test Title",
-                Text = "Test Text"
+                Text = "Test Text",
+                Tags= "Test tags"
             };
 
             // Act

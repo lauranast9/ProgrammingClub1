@@ -14,9 +14,6 @@ namespace ProgrammingClub.DataContext
         public DbSet<MembershipType> MembershipTypes { get; set; }
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=ProgrammingClub;Trusted_Connection=True; Encrypt=False").LogTo(Console.WriteLine, LogLevel.Information);
-        }
+        
     }
 }

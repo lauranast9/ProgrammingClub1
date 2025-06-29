@@ -1,0 +1,13 @@
+﻿C:\Users\nastase.l.1\source\repos\ProgrammingClub\ProgrammingClub.UnitTests\Controllers.Integration\MembersControllerTests.cs
+C:\Users\nastase.l.1\source\repos\ProgrammingClub\ProgrammingClub.UnitTests\Helpers\DBContextHelper.cs
+C:\Users\nastase.l.1\source\repos\ProgrammingClub\ProgrammingClub.UnitTests\Models\BuilderBase.cs
+C:\Users\nastase.l.1\source\repos\ProgrammingClub\ProgrammingClub.UnitTests\Models\Builders\AnnouncementBuilder.cs
+C:\Users\nastase.l.1\source\repos\ProgrammingClub\ProgrammingClub.UnitTests\Models\Builders\MemberBuilder.cs
+C:\Users\nastase.l.1\source\repos\ProgrammingClub\ProgrammingClub.UnitTests\Repository.Test\AnnouncementRepositoryTest.cs
+C:\Users\nastase.l.1\source\repos\ProgrammingClub\ProgrammingClub.UnitTests\Repository.Test\MembersRepositoryTest.cs
+C:\Users\nastase.l.1\.nuget\packages\microsoft.net.test.sdk\17.14.1\build\net8.0\Microsoft.NET.Test.Sdk.Program.cs
+C:\Users\nastase.l.1\.nuget\packages\microsoft.testplatform.testhost\17.14.1\build\net8.0\x64\testhost.exe
+C:\Users\nastase.l.1\.nuget\packages\microsoft.testplatform.testhost\17.14.1\build\net8.0\x64\testhost.dll
+C:\Users\nastase.l.1\.nuget\packages\xunit.runner.visualstudio\2.5.3\build\net6.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\nastase.l.1\.nuget\packages\xunit.runner.visualstudio\2.5.3\build\net6.0\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\nastase.l.1\.nuget\packages\xunit.runner.visualstudio\2.5.3\build\net6.0\xunit.runner.utility.netcoreapp10.dll

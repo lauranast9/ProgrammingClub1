@@ -2,13 +2,12 @@ using Microsoft.EntityFrameworkCore;
 using ProgrammingClub.DataContext;
 using ProgrammingClub.Repositories;
 using ProgrammingClub.Services;
-using ProgrammingClub.DataContext;
+
 using ProgrammingClub.Models;
-using ProgrammingClub.Repositories;
-using ProgrammingClub.Services;
+
 using TechTalk.SpecFlow;
 
-namespace ProgrammingClubAPI.SpecsTests
+namespace ProgrammingClub.SpecsTests
 {
     [Binding]
     public class GetMemberByIdSteps
@@ -20,10 +19,10 @@ namespace ProgrammingClubAPI.SpecsTests
         private Member _resultMember;
 
 
-        [Given(@"a member exists with IDMember ""(.*)""")]
-        public void GivenAMemberExistWithIdMember(string IDMember)
+        [Given(@"a member exists with IdMember ""(.*)""")]
+        public void GivenAMemberExistWithIdMember(string IdMember)
         {
-            var id = Guid.Parse(IDMember);
+            var id = Guid.Parse(IdMember);
 
             _testMember = new Member()
             {
@@ -53,13 +52,13 @@ namespace ProgrammingClubAPI.SpecsTests
             _membersService = new MembersService(_membersRepository, null);
         }
 
-        [When(@"the member is requested by IDMember")]
+        [When(@"the member is requested by IdMember")]
         public async Task WhenTheMemberIsRequestedByIdMember()
         {
             _resultMember = await _membersService.GetMemberByIdAsync(_testMember.IdMember);
         }
 
-        [Then(@"the response should contain the member with the same IDMember")]
+        [Then(@"the response should contain the member with the same IdMember")]
         public void ThenTheMemberShouldBeReturnedWithIdMember()
         {
             Assert.NotNull(_resultMember);
