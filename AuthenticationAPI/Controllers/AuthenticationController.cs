@@ -8,7 +8,7 @@ namespace AuthenticationAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [ApiVersion("3.0")]
+    
     public class AuthenticationController : ControllerBase
     {
         private readonly ITokenService _tokenService;
@@ -22,7 +22,7 @@ namespace AuthenticationAPI.Controllers
 
         [HttpPost]
         [Route("register")]
-        [MapToApiVersion("3.0")]
+        
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto user)
         {
             var identityUser = new IdentityUser
@@ -50,7 +50,7 @@ namespace AuthenticationAPI.Controllers
 
         [HttpPost]
         [Route("login")]
-        [MapToApiVersion("3.0")]
+       
         public async Task<IActionResult> Login([FromBody] LoginRequestDTO loginRequest)
         {
             var identityUser = await _userManager.FindByNameAsync(loginRequest.Username);

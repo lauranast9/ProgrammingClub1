@@ -8,8 +8,8 @@ using System.Net;
 
 namespace ProgrammingClub.Controllers
 {
-    [ApiVersion("3.0")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+
+    [Route("api/[controller]")]
     [ApiController]
     public class AnnouncementsController : ControllerBase
     {
@@ -21,7 +21,7 @@ namespace ProgrammingClub.Controllers
 
         // GET: api/<AnnouncementsController>
         [HttpGet]
-        [MapToApiVersion("3.0")]
+       
         public async Task<IActionResult> Get()
         {
             try
@@ -41,7 +41,7 @@ namespace ProgrammingClub.Controllers
 
         // GET api by ID/<AnnouncementsController>/5
         [HttpGet("{id:guid}")]
-        [MapToApiVersion("3.0")]
+        
         public async Task<IActionResult> GetAnnouncementById(Guid id)
         {
             try
@@ -61,7 +61,7 @@ namespace ProgrammingClub.Controllers
 
         // POST api/<AnnouncementController>
         [HttpPost]
-        [MapToApiVersion("3.0")]
+        
         public async Task<IActionResult> AddAnnouncement([FromBody] Announcement announcement)
         {
             try
@@ -82,7 +82,7 @@ namespace ProgrammingClub.Controllers
 
         // PUT api/<announcementsController>/5
         [HttpPut("{id}")]
-        [MapToApiVersion("3.0")]
+       
         public async Task<IActionResult> Put(Guid id, [FromBody] Announcement announcement)
         {
             try
@@ -107,7 +107,7 @@ namespace ProgrammingClub.Controllers
         }
 
         [HttpPatch("{id}")]
-        [MapToApiVersion("3.0")]
+       
         public async Task<IActionResult> PatchAnnouncement(Guid id, [FromBody] UpdateAnnouncementPartially announcement)
         {
             try
@@ -130,7 +130,7 @@ namespace ProgrammingClub.Controllers
         }
 
         [HttpDelete("{id}")]
-        [MapToApiVersion("3.0")]
+       
         public async Task<IActionResult> Delete(Guid id)
         {
             try
