@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using ProgrammingClub.CQRS.Commands;
 using ProgrammingClub.CQRS.DTOs;
 using ProgrammingClub.CQRS.Querries;
+using ProgrammingClub.Custom_Exceptions;
 using ProgrammingClub.Models;
 
 namespace ProgrammingClub.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("3.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class MembershipTypesController : ControllerBase
     {
@@ -38,13 +40,23 @@ namespace ProgrammingClub.Controllers
             }
             return Ok(membershipType);
         }
-
         [HttpPost]
         public async Task<IActionResult> CreateMembershipType(MembershipTypeDTO dto)
         {
-            var command = new CreateMembershipTypeCommand(dto);
-            var membershipTypeId = await _mediator.Send(command);
-            return Ok(membershipTypeId);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var command = new CreateMembershipTypeCommand(dto);
+                var membershipTypeId = await _mediator.Send(command);
+                return Ok(membershipTypeId);
+            }
+            catch (DuplicateMembershipTypeException ex)
+            {
+                return Conflict(new { message = ex.Message });
+            }
         }
 
         [HttpDelete]

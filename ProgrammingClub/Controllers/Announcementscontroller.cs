@@ -8,9 +8,9 @@ using System.Net;
 
 namespace ProgrammingClub.Controllers
 {
+    [ApiVersion("3.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    [ApiVersion("3.0")]
     public class AnnouncementsController : ControllerBase
     {
         private readonly IAnnouncementsService _announcementService;

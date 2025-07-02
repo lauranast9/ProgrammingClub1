@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using ProgrammingClub.CQRS.Commands;
+using ProgrammingClub.Custom_Exceptions;
 using ProgrammingClub.DataContext;
 using ProgrammingClub.Models;
 
@@ -18,6 +20,13 @@ namespace ProgrammingClub.CQRS.Handlers
 
         public async Task<Guid> Handle(CreateMembershipTypeCommand request, CancellationToken cancellationToken)
         {
+            var existingMembershipType = await _context.MembershipTypes
+      .AnyAsync(mt => mt.Name == request.Dto.Name);
+
+            if (existingMembershipType)
+            {
+                throw new DuplicateMembershipTypeException(request.Dto.Name);
+            }
             var membershipType = new MembershipType
             {
                 IDMembershipType = Guid.NewGuid(),

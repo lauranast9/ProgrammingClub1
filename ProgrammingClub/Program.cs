@@ -1,9 +1,12 @@
-
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using ProgrammingClub.DataContext;
 using ProgrammingClub.Helpers;
+using ProgrammingClub.Models.Validators;
 using ProgrammingClub.Repositories;
 using ProgrammingClub.Services;
 
@@ -57,7 +60,7 @@ builder.Services.AddApiVersioning(options =>
 {
     options.ReportApiVersions = true;
     options.AssumeDefaultVersionWhenUnspecified = true;
-    options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+    options.DefaultApiVersion = new ApiVersion(1, 0);
 });
 
 builder.Services.AddVersionedApiExplorer(options =>
@@ -82,11 +85,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+            ValidIssuer = builder.Configuration["JWT:Issuer"],
+            ValidAudience = builder.Configuration["JWT:Audience"],
+            IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
         };
     });
+
+builder.Services.AddValidatorsFromAssemblyContaining<MembershipTypeValidator>();
+builder.Services.AddFluentValidationAutoValidation();
 
 var app = builder.Build();
 
@@ -97,12 +103,10 @@ var versionDescriptionsProvider = app.Services.GetRequiredService<IApiVersionDes
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
         foreach (var item in versionDescriptionsProvider.ApiVersionDescriptions)
-
         {
             options.SwaggerEndpoint($"/swagger/{item.GroupName}/swagger.json", item.GroupName.ToUpperInvariant());
         }

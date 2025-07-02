@@ -12,7 +12,6 @@ namespace ProgrammingClub.Controllers
     //[Route("api/[controller]")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    [ApiVersion("2.0")]
     [ApiVersion("3.0")]
     public class MembersController : ControllerBase
     {
@@ -46,7 +45,7 @@ namespace ProgrammingClub.Controllers
         [HttpGet]
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin,Member")]
-        [MapToApiVersion("2.0")]
+       
         public async Task<IActionResult> GetV2()
         {
             try
